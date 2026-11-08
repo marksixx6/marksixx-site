@@ -1,0 +1,25 @@
+/* v12 (Nov 5 2026): team card grid + wider brands strip. Additions only. */
+.tm-list.tm12-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px;max-width:none}
+.tm.tm12{display:block;text-align:center;padding:0;background:none;border:0}
+.tm12 .tm-ph{aspect-ratio:1/1;background:#fff;border-radius:18px;overflow:hidden;display:grid;place-items:center;margin:0 0 12px;box-shadow:0 1px 0 rgba(255,255,255,.04)}
+.tm12 .tm-ph picture,.tm12 .tm-ph>img{display:block;width:100%;height:100%}
+.tm12 .tm-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.tm12 .tm-ph6 img{width:18%;height:auto;object-fit:contain;opacity:.85}
+.tm12 .tm-n{font-size:15px}
+.tm12 .tm-r{margin-top:5px}
+@media (min-width:900px){.tm-list.tm12-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 24px;max-width:1040px}.tm12 .tm-n{font-size:16px}}
+@media (min-width:900px){.logos.logos-color.logos9{flex-wrap:wrap}.logos.logos-color.logos9 li{flex:0 0 calc((100% - 70px)/6)}}
+
+/* v13 (Nov 5 2026): faces straight on black, no tile */
+.tm12 .tm-ph,.tm12 .tm-ph.tm-ph6{background:transparent;border-radius:0;box-shadow:none;overflow:visible}
+.tm12 .tm-ph img{object-fit:contain}
+.tm12 .tm-ph6 img{width:18%;height:auto;opacity:1}
+
+/* v14 (Nov 5 2026): rounded 'button' cards with depth on black (Yiddy 9:38 AM) */
+.tm12 .tm-ph,.tm12 .tm-ph.tm-ph6{position:relative;background:linear-gradient(180deg,#ffffff 0%,#f1f3f7 100%);border-radius:24px;overflow:hidden;
+ box-shadow:0 22px 44px -14px rgba(0,0,0,.9),0 8px 18px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.10),0 0 28px -6px rgba(46,120,255,.22)}
+.tm12 .tm-ph::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+ background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,0) 38%);
+ box-shadow:inset 0 2px 0 rgba(255,255,255,.85),inset 0 -3px 8px rgba(0,0,0,.10)}
+.tm12 .tm-ph img{object-fit:cover}
+.tm12 .tm-ph6 img{width:22%;height:auto;object-fit:contain;opacity:1}

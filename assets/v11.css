@@ -1,0 +1,23 @@
+.mx-add2{display:inline-flex;align-items:center;margin-top:12px;padding:8px 14px;border-radius:999px;border:1px dashed rgba(214,216,222,.35);background:transparent;color:#d8d8db;font:600 13px/1 Manrope;cursor:pointer}
+.mx-add2:hover{border-color:#f3f3f1;color:#f3f3f1}.mx-add2[hidden],.mx-c2[hidden]{display:none}
+.mx-c2{margin-top:16px}.mx-c2-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.mx-c2-h .mx-lab{margin-bottom:10px}
+.mx-c2-x{border:0;background:transparent;color:#8e8e93;font:600 12px/1 Manrope;cursor:pointer;padding:4px 0}.mx-c2-x:hover{color:#f3f3f1}
+/* two colours: the second is the accent */
+.two .mx-after .mx-av{background:conic-gradient(from 200deg,var(--c),var(--a),var(--c))}
+.two .mx-after .mx-hl i{border:0;padding:2.5px;background:conic-gradient(from 210deg,var(--c),var(--a),var(--c))}
+.two .mx-after .mx-hl i em{border:2px solid #fff}
+.two .mx-after .mx-hl>span:nth-child(even) i em{background:radial-gradient(120% 120% at 30% 20%,color-mix(in srgb,var(--a) 75%,#fff),var(--a) 60%,var(--a2))}
+.two .mx-after .mx-hl>span:nth-child(even) svg{stroke:var(--at)}
+.two .mx-after .mx-btns span.p{background:var(--a);color:var(--at)}
+.two .mx-after .tp .bar{background:var(--a)}
+.two .mx-after .tp-new{background:linear-gradient(150deg,var(--c) 0%,var(--c) 38%,var(--a) 100%)}
+.two .mx-after .tp-quote .q{color:var(--a)}
+.two .mx-after .tp-offer .t em{color:var(--a)}
+.two .mx-after .tp-rev .stars svg{stroke:var(--a)}
+.two .mx-after .tp-tips{background:var(--a);color:var(--at)}
+.two .mx-after .tp-team .ppl i:nth-child(2){background:linear-gradient(180deg,var(--c),var(--a))}
+.two .mx-after .tp-shab .sp i::before{background:var(--a)}
+.two .mx-after .tp-cta{background:radial-gradient(120% 100% at 0% 100%,color-mix(in srgb,var(--a) 40%,#141415),#141415 70%)}
+.two .mx-after .tp-cta .btn{background:var(--a);color:var(--at)}
+.two .mx-after .tp .wm{background:var(--a);color:var(--at);box-shadow:0 0 0 .5cqw color-mix(in srgb,var(--a) 70%,transparent)}
+.two .mx-tag-a{background:var(--a);color:var(--at)}

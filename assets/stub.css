@@ -1,0 +1,13 @@
+@font-face{font-family:"Poppins";src:url(/assets/Poppins-Medium.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"Manrope";src:url(/assets/Manrope.woff2) format("woff2");font-weight:200 800}
+*{box-sizing:border-box;margin:0;padding:0}body{background:#141415;color:#f1f1ef;font-family:Manrope,sans-serif;min-height:100svh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px}
+.logo{display:flex;align-items:center;gap:7px}.logo img:first-child{height:27px}.logo img:last-child{height:15px;margin-top:3px}
+.cta{font:600 13px/1 Manrope;color:#111;background:#f3f3f1;border-radius:999px;padding:10px 16px}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 28px 80px;max-width:760px;margin:0 auto;width:100%}
+.k{font:600 11px/1 Manrope;letter-spacing:.34em;text-transform:uppercase;color:#8d8d92;display:flex;align-items:center;gap:10px}
+.k img{height:22px}
+h1{font:500 clamp(40px,9vw,72px)/1.05 Poppins,sans-serif;letter-spacing:-.02em;margin:18px 0 14px}
+p{font-size:17px;color:#bdbdc1}.soon{margin-top:36px;font:600 10px/1 Manrope;letter-spacing:.3em;text-transform:uppercase;color:#6f6f74}
+.back{margin-top:44px;display:inline-flex;gap:10px;font:600 12px/1 Manrope;letter-spacing:.24em;text-transform:uppercase;color:#d6d6d9;border:1px solid rgba(214,216,222,.4);border-radius:999px;padding:14px 20px;align-self:flex-start}
+.back:hover{border-color:#2E5FC2}

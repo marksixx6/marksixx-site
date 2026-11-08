@@ -1,0 +1,11 @@
+/* v15 final: real Google reviews */
+.sec-rev15 .rv-list{grid-template-columns:1fr}
+.rv.rv15{border:1px solid rgba(255,255,255,.08);background:#161618;margin:0}
+.rv15 .stars svg{fill:#f5b81c;stroke:#f5b81c}
+.rv15 blockquote{margin:0}
+.rv15 blockquote p{font:500 16px/1.5 Quicksand,Manrope;color:#e6e6e3}
+.rv15 .rv-who{color:#c3c3c8;letter-spacing:.16em;line-height:1.4}
+.rv15 .rv-who span{color:#6f6f74}
+.rv-score{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rv-g{font:600 15px/1 Manrope;color:#f5b81c;letter-spacing:.04em}
+@media (min-width:900px){.sec-rev15 .rv-list{grid-template-columns:repeat(2,1fr);gap:16px}}

@@ -1,0 +1,27 @@
+.wa6{position:fixed;right:14px;bottom:calc(env(safe-area-inset-bottom) + 78px);z-index:29;width:56px;height:56px;border-radius:50%;
+  box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 2px rgba(255,255,255,.16);transition:opacity .25s,transform .25s;-webkit-tap-highlight-color:transparent}
+.wa6 img{display:block;width:56px;height:56px;border-radius:50%}
+.wa6-b{position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 0 0 2px #141415}
+.wa6-b svg{width:14px;height:14px;fill:#fff}
+.wa6-t{display:none}
+.wa6.wa6-off{opacity:0;transform:translateY(14px) scale(.9);pointer-events:none}
+.wa6:active{transform:scale(.94)}
+@media (min-width:900px){
+  .wa6{right:28px;bottom:28px;width:auto;height:auto;display:flex;align-items:center;gap:12px;padding:6px 20px 6px 6px;border-radius:999px;
+    background:rgba(28,28,30,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  .wa6 img{width:46px;height:46px}
+  .wa6-b{left:38px;right:auto;bottom:4px;width:18px;height:18px}
+  .wa6-b svg{width:11px;height:11px}
+  .wa6-t{display:block;font:600 14px/1 Manrope,sans-serif;color:#f2f2f0}
+  .wa6:hover{background:rgba(40,40,44,.92)}
+}
+@media print{.wa6{display:none}}
+/* footer sign-off */
+.foot-six{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;font:600 11px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d4d4d6}
+.foot-six img{width:12px;height:auto}
+/* bug fix: ".mo p" (12.5px) was overriding the big numbers in the "month" cards */
+.mo p.mo-n{font:500 34px/1.05 Poppins,Manrope,sans-serif;color:#f3f3f1;letter-spacing:-.02em;margin-top:0}
+.mo p.mo-n small{font-size:.42em}
+@media (min-width:900px){.mo p.mo-n{font-size:44px}}
+.mo p.mo-n small{display:block;margin:7px 0 0 1px;font:500 12px/1.2 Manrope,sans-serif;letter-spacing:.04em;color:#8e8e93}
+.mo p.mo-n b{font-weight:inherit;white-space:nowrap}

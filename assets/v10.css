@@ -1,0 +1,47 @@
+/* v10: Why every day matters (additions only) */
+.sec-ed{--g:#25D366;--gd:rgba(37,211,102,.16)}
+.ed-tl{position:relative;margin:6px 0 46px}
+.ed-steps{list-style:none;margin:0;padding:0;display:grid;gap:34px;position:relative;z-index:1}
+.ed-step{display:grid;grid-template-columns:68px 1fr;gap:18px;align-items:center}
+.ed-ring{position:relative;width:68px;height:68px;border-radius:50%;background:#141415}
+.ed-ring>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ed-ring>svg circle{fill:none;stroke-width:5.5;transform:rotate(-90deg);transform-origin:50% 50%}
+.ed-track{stroke:rgba(255,255,255,.13)}
+.ed-fill{stroke:var(--g)}
+.ed-ring .ed-mask{stroke:#fff;stroke-width:14;stroke-dasharray:100 100;stroke-dashoffset:100;transition:stroke-dashoffset 1.15s cubic-bezier(.3,.7,.2,1)}
+.ed-ic{position:absolute;inset:11px;border-radius:50%;background:#1d1d20;display:grid;place-items:center;transition:background .6s,transform .6s cubic-bezier(.3,1.5,.5,1)}
+.ed-ic svg{width:42%;height:42%;fill:none;stroke:#8d8d92;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:stroke .6s}
+.ed-dot{position:absolute;top:-3px;right:-5px;min-width:19px;height:19px;border-radius:10px;background:var(--g);color:#08250f;font:700 11px/19px Manrope,sans-serif;font-style:normal;text-align:center;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1) .7s;box-shadow:0 0 0 3px #141415}
+.ed-when{font:600 11.5px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7d7d82;margin:0 0 8px;transition:color .6s}
+.ed-n{letter-spacing:.04em;text-transform:none;color:#5d5d62;font-weight:500}
+.ed-step h3{font:500 clamp(21px,5.6vw,26px)/1.15 Poppins,sans-serif;letter-spacing:-.02em;color:#6f6f74;margin:0;transition:color .6s}
+.ed-sub{font:400 13.5px/1.5 Manrope,sans-serif;color:#6a6a6f;margin:6px 0 0;transition:color .6s}
+.ed-step.on .ed-mask{stroke-dashoffset:0}
+.ed-step.on .ed-ic{background:var(--gd);transform:scale(1.04)}
+.ed-step.on .ed-ic svg{stroke:#eafbf0}
+.ed-step.on .ed-when{color:var(--g)}
+.ed-step.on h3{color:#f4f4f2}
+.ed-step.on .ed-sub{color:#a9a9ae}
+.ed-step.on .ed-dot{transform:scale(1)}
+.ed-line{position:absolute;left:33px;width:2px;top:34px;height:calc(100% - 68px);background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.ed-line i{position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,211,102,.35),var(--g));transform-origin:0 0;transform:scaleY(var(--p,0))}
+.ed-stats{grid-template-columns:1fr 1fr}
+.ed-stats .stat:last-child{grid-column:1/-1}
+.ed-cta{margin-top:30px;text-align:center}
+.ed-cta .big-cta{margin-top:0}
+@media (min-width:900px){
+ .ed-tl{margin:18px 0 64px}
+ .ed-steps{grid-template-columns:repeat(4,1fr);gap:28px}
+ .ed-step{grid-template-columns:1fr;justify-items:center;text-align:center;gap:22px;align-items:start}
+ .ed-ring{width:104px;height:104px}
+ .ed-step h3{font-size:clamp(18px,1.6vw,23px);white-space:nowrap}
+ .ed-sub{font-size:13px}
+ .ed-ic{inset:16px}
+ .ed-dot{min-width:24px;height:24px;line-height:24px;font-size:13px;border-radius:12px}
+ .ed-line{left:calc(12.5% - 3.5px);right:calc(12.5% - 3.5px);width:auto;top:51px;height:2px}
+ .ed-line i{background:linear-gradient(90deg,rgba(37,211,102,.35),var(--g));transform:scaleX(var(--p,0))}
+ .ed-stats{grid-template-columns:repeat(3,1fr)}
+ .ed-stats .stat:last-child{grid-column:auto}
+ .ed-cta{margin-top:40px}
+}
+@media (prefers-reduced-motion:reduce){.ed-ring .ed-mask,.ed-ic,.ed-ic svg,.ed-dot,.ed-step h3,.ed-sub,.ed-when{transition:none}}
