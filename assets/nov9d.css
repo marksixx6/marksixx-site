@@ -1,0 +1,5 @@
+
+/* nov9d: branding page uses project stacks (w9) */
+.g9c-b5 .w9-btn{aspect-ratio:1/1}
+.g9c-b5 .g9c-wide .w9-btn{aspect-ratio:auto;flex:1 1 auto;min-height:120px}
+.g9c-b5 .g9c-wide .w9-btn img{object-fit:cover}
