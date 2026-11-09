@@ -1,0 +1,63 @@
+/* leadpop-v1: "Free 2-min check" lead pop-up (Nov 9 2026). Remove this file + leadpop-v1.js to roll back. */
+.lp1{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;
+  padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));
+  background:rgba(6,6,7,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
+.lp1.lp1-on{opacity:1;visibility:visible;transition:opacity .28s ease}
+.lp1-card{position:relative;width:100%;max-width:400px;max-height:100%;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  background:#18181a;border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:26px 20px 16px;
+  box-shadow:0 24px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05);
+  transform:translateY(16px) scale(.98);transition:transform .32s cubic-bezier(.2,.8,.2,1);outline:none}
+.lp1.lp1-on .lp1-card{transform:none}
+.lp1-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.06);
+  display:grid;place-items:center;cursor:pointer;color:#c9c9cd;-webkit-tap-highlight-color:transparent;transition:background .2s}
+.lp1-x svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;fill:none}
+.lp1-x:active{background:rgba(255,255,255,.14)}
+@media (hover:hover){.lp1-x:hover{background:rgba(255,255,255,.12)}}
+.lp1-tag{display:inline-flex;align-items:center;gap:8px;font:500 10px/1 Quicksand,Manrope,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9fb7ea;margin:0 48px 12px 0}
+.lp1-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:#2E5FC2;box-shadow:0 0 0 3px rgba(46,95,194,.22);flex:none}
+.lp1-h{font:500 23px/1.18 Poppins,Manrope,sans-serif;letter-spacing:-.015em;color:#f3f3f1;margin:0 34px 8px 0;text-wrap:balance}
+.lp1-s{font:400 14px/1.45 Manrope,sans-serif;color:#9a9a9f;margin:0 0 18px;text-wrap:pretty}
+.lp1-f{display:grid;gap:12px;margin:0}
+.lp1-f label{display:grid;gap:7px;font:500 10px/1 Quicksand,Manrope,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8e8e93}
+.lp1-f input{font:400 16px/1.3 Manrope,sans-serif;color:#f1f1ef;background:#111112;border:1px solid rgba(214,216,222,.18);border-radius:14px;
+  padding:13px 14px;width:100%;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;letter-spacing:0;text-transform:none;margin:0}
+.lp1-f input::placeholder{color:#5c5c61}
+.lp1-f input:focus{border-color:#2E5FC2}
+.lp1-f .lp1-bad input{border-color:#e0605a}
+.lp1-err{display:none;font:500 12px/1.2 Manrope,sans-serif;letter-spacing:0;text-transform:none;color:#f08a84}
+.lp1-bad .lp1-err{display:block}
+.lp1-go{margin-top:6px;display:flex;justify-content:center;align-items:center;gap:10px;width:100%;font:600 15.5px/1 Manrope,sans-serif;color:#111;background:#f3f3f1;
+  border:0;border-radius:999px;padding:17px 22px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,transform .15s}
+.lp1-go svg{width:19px;height:19px;fill:#111}
+.lp1-go:active{transform:scale(.98)}
+@media (hover:hover){.lp1-go:hover{background:#fff}}
+.lp1-no{display:block;margin:6px auto 0;padding:10px 14px;background:none;border:0;font:500 13px/1 Manrope,sans-serif;color:#7d7d82;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(125,125,130,.45);-webkit-tap-highlight-color:transparent}
+@media (hover:hover){.lp1-no:hover{color:#b5b5ba}}
+.lp1-fine{font:400 11.5px/1.4 Manrope,sans-serif;color:#6f6f74;text-align:center;margin:2px 0 0}
+.lp1-ty{display:none;text-align:center;padding:14px 4px 8px}
+.lp1-done .lp1-form{display:none}
+.lp1-done .lp1-ty{display:block}
+.lp1-ok{width:56px;height:56px;border-radius:50%;margin:4px auto 16px;display:grid;place-items:center;background:rgba(37,211,102,.12);box-shadow:0 0 0 1px rgba(37,211,102,.35)}
+.lp1-ok svg{width:26px;height:26px;stroke:#25D366;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lp1-ty .lp1-h{margin:0 0 8px}
+.lp1-ty .lp1-s{margin:0 0 18px}
+.lp1-ty a{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 Manrope,sans-serif;color:#9fb7ea;padding:8px 6px}
+html.lp1-lock,html.lp1-lock body{overflow:hidden}
+@media (max-height:700px){
+  .lp1-card{padding:22px 18px 12px}
+  .lp1-h{font-size:21px}
+  .lp1-s{font-size:13.5px;margin-bottom:14px}
+  .lp1-tag{margin-bottom:10px}
+  .lp1-f{gap:10px}
+  .lp1-f input{padding:11px 13px}
+  .lp1-go{padding:15px 20px}
+}
+@media (min-width:900px){
+  .lp1-card{max-width:440px;padding:34px 32px 20px}
+  .lp1-h{font-size:27px}
+  .lp1-s{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){.lp1,.lp1-card{transition:none}}
+@media print{.lp1{display:none!important}}
