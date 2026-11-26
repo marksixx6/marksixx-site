@@ -61,3 +61,6 @@ html.lp1-lock,html.lp1-lock body{overflow:hidden}
 }
 @media (prefers-reduced-motion:reduce){.lp1,.lp1-card{transition:none}}
 @media print{.lp1{display:none!important}}
+
+.lp1-fail{margin:0 0 12px;padding:10px 12px;border-radius:10px;background:rgba(220,70,70,.12);border:1px solid rgba(220,70,70,.4);color:#f3c4c4;font-size:14px;line-height:1.4}
+.lp1-fail a{color:#fff;text-decoration:underline}
