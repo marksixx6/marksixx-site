@@ -1,5 +1,6 @@
-/* leadpop-v1: "Free 2-min check" lead pop-up (Nov 9 2026). Shows once per visit (each new browser session) until the visitor submits ~10 s after landing; submit opens WhatsApp to Marksixx. */
+/* leadpop-v1: "Free 2-min check" lead pop-up (Nov 9 2026). Shows once per visit (each new browser session) until the visitor submits ~10 s after landing; submit sends the lead to the owner by email (no WhatsApp handoff). */
 (function(){
+  var ENDPOINT=(window.__LP_ENDPOINT||'https://api.web3forms.com/submit'),ACCESS_KEY='cf617736-5258-441c-a78c-18e610c6cf8b';
   var KEY='mx_leadpop_v1',SKEY='mx_leadpop_s2',WA='18455403982',DELAY=10000;
   try{if(localStorage.getItem(KEY)==='sent'||sessionStorage.getItem(SKEY))return}catch(e){}
   if(/[?&]leadpop=off\b/.test(location.search))return;
@@ -31,16 +32,17 @@
             '<label>Name<input name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Your name"><span class="lp1-err">Please add your name.</span></label>'+
             '<label>Business name<input name="biz" type="text" autocomplete="organization" required maxlength="100" placeholder="Your business"><span class="lp1-err">Please add your business name.</span></label>'+
             '<label>Phone / WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="24" placeholder="(555) 555-5555"><span class="lp1-err">Please add a phone number we can reach.</span></label>'+
-            '<button type="submit" class="lp1-go">'+waIcon+'Get my free check</button>'+
+            '<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">'+
+            '<button type="submit" class="lp1-go">Get my free check</button>'+
           '</form>'+
           '<button type="button" class="lp1-no">No thanks</button>'+
         '</div>'+
         '<div class="lp1-ty" role="status">'+
           '<div class="lp1-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>'+
           '<h2 class="lp1-h">Got it!</h2>'+
-          '<p class="lp1-s">We\u2019ll check your business and reach out.</p>'+
+          '<p class="lp1-s">We\u2019ll check your business and contact you soon.</p>'+
           '<button type="button" class="lp1-go lp1-close">Close</button>'+
-          '<a class="lp1-again" href="#" target="_blank" rel="noopener">WhatsApp didn\u2019t open? Tap here</a>'+
+          
         '</div>'+
       '</div></div>');
     document.body.appendChild(root);
@@ -56,19 +58,30 @@
   function valid(i){var v=i.value.trim();if(i.name==='phone')return v.replace(/\D/g,'').length>=7;return v.length>=2||(i.name==='biz'&&v.length>=1)}
   function submit(e){
     e.preventDefault();
-    var ins=form.querySelectorAll('input'),first=null;
+    var ins=form.querySelectorAll('input:not([name=botcheck])'),first=null;
     for(var k=0;k<ins.length;k++){var ok=valid(ins[k]);ins[k].closest('label').classList.toggle('lp1-bad',!ok);ins[k].setAttribute('aria-invalid',ok?'false':'true');if(!ok&&!first)first=ins[k]}
     if(first){first.focus();return}
     var f=function(n){return form.elements[n].value.trim().replace(/\s+/g,' ')};
+    if(form.elements['botcheck']&&form.elements['botcheck'].checked){return}
     var page=location.origin+location.pathname;
-    var msg='New free check request \u2014 Name: '+f('name')+' | Business: '+f('biz')+' | Phone: '+f('phone')+' | Page: '+page;
-    var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
-    remember('sent');
-    root.querySelector('.lp1-again').href=url;
-    card.classList.add('lp1-done');card.scrollTop=0;
-    if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
-    window.__leadpopLast=url;
-    var w=null;try{w=window.open(url,'_blank','noopener')}catch(err){}
+    var btn=form.querySelector('.lp1-go'),label=btn.textContent;
+    btn.disabled=true;btn.textContent='Sending\u2026';
+    var payload={access_key:ACCESS_KEY,subject:'Marksixx lead: '+f('biz'),from_name:'Marksixx website',name:f('name'),business:f('biz'),phone:f('phone'),page:page,botcheck:''};
+    var waUrl='https://wa.me/'+WA+'?text='+encodeURIComponent('Hi Marksixx! I asked for the free check. Name: '+f('name')+' | Business: '+f('biz')+' | Phone: '+f('phone'));
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){return r.json().then(function(j){return r.ok&&j&&j.success})})
+      .then(function(ok){
+        if(!ok)throw new Error('send failed');
+        remember('sent');
+        form.reset();
+        card.classList.add('lp1-done');card.scrollTop=0;
+      })
+      .catch(function(){
+        btn.disabled=false;btn.textContent=label;
+        var err=form.querySelector('.lp1-fail');
+        if(!err){err=document.createElement('p');err.className='lp1-fail';err.setAttribute('role','alert');form.insertBefore(err,btn)}
+        err.innerHTML='Couldn\u2019t send that. Please try again, or <a href="'+waUrl+'" target="_blank" rel="noopener">message us on WhatsApp</a>.';
+      });
   }
   function open(){
     if(shown)return;shown=true;remember();
